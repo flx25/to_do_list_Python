@@ -1,11 +1,14 @@
 to_do_list = []
 
 def read_in_list():
-	with open("todo.txt", "r") as file:
-		for line in file:
-			to_do_list.append(line.strip())
-	if to_do_list:
-		print("List has been loaded.")
+	try:
+		with open("todo.txt", "r") as file:
+			for line in file:
+				to_do_list.append(line.strip())
+		if to_do_list:
+			print("List has been loaded.")
+	except FileNotFoundError:
+		print("No to do list found, creating a new one.")
 
 def main_loop():
 	if to_do_list:
